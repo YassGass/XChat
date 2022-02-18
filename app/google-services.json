@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "293124236313",
+    "project_id": "xchat-46eb0",
+    "storage_bucket": "xchat-46eb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293124236313:android:03d4e7ceb28271f733b688",
+        "android_client_info": {
+          "package_name": "com.yhassanjoseph.todelchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293124236313-e0kik0q4ag9cfjhkhv2edqlo5v42qjjp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACHn72sYv4N78tcMPZ0HMfyO1XgbEqOF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293124236313-e0kik0q4ag9cfjhkhv2edqlo5v42qjjp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

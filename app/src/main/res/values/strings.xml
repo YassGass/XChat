@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">to del chat</string>
+    <string name="login_enter_password">entrer votre mot de passe</string>
+    <string name="login_enter_mail">entrer votre mail</string>
+    <string name="login_login">se connecter</string>
+    <string name="votre_mail_a_t_envoyer_veuiller_patienter">votre mail a été envoyer, veuiller patienter</string>
+</resources>
