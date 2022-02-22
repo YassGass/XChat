@@ -20,11 +20,13 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.storage.StorageReference;
 import com.yhassanjoseph.todelchat.MainActivity;
 import com.yhassanjoseph.todelchat.R;
 
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 import io.grpc.Context;
@@ -103,8 +105,14 @@ public class SignupActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                fuser = FirebaseAuth.getInstance().getCurrentUser();
+                                userID = CURRENT_USER.getUid();
+
+                                if (localFileUri != null){
+                                    UpdateNameAndPhoto();
+                                }else {
+                                    updtaeNameOnly();
+                                }
                             } else {
                                 Toast.makeText(SignupActivity.this, getString(R.string.failed_signup,
                                         task.getException())
@@ -112,10 +120,51 @@ public class SignupActivity extends AppCompatActivity {
                                         .show();
                             }
                         }
+
+
                     });
         }
     }
 
+    private void updtaeNameOnly() {
+        //ajout du nom du user dans l'authentificateur
+        UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
+                .setDisplayName(etName.getText().toString().trim())
+                .build();
+
+        fuser.updateProfile(request)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            //creation d'une hashmap pour la gestion des données
+                            HashMap<String, Object> hashMap = new HashMap<>();
+                            hashMap.put(NAME, etName.getText().toString().trim());
+                            hashMap.put(EMAIL, etEmail.getText().toString().trim());
+                            hashMap.put(ONLINE, "true");
+                            hashMap.put(AVATAR, "");
+
+                            userCollectionReference.document(userID).set(hashMap)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(SignupActivity.this, "user created successfully", Toast.LENGTH_SHORT)
+                                                .show();
+
+                                        startActivity(new Intent(SignupActivity.this, SignInActivity.class));
+                                    }
+                                });
+
+                        }    else {
+                            Toast.makeText(SignupActivity.this, "user created failed", Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    }
+                });
+    }
+
+    private void UpdateNameAndPhoto() {
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
