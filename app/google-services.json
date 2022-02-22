@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "293124236313-mnit9fcjr72v9jnsmq1h9m79lvdk33b3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yhassanjoseph.todelchat",
+            "certificate_hash": "26b706289c542cc754818e15c7718aa5d8b8cef7"
+          }
+        },
+        {
           "client_id": "293124236313-e0kik0q4ag9cfjhkhv2edqlo5v42qjjp.apps.googleusercontent.com",
           "client_type": 3
         }

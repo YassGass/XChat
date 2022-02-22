@@ -101,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="btnSignInActivity"
             android:text="inscrit toi ;)"
             android:textColor="#C18F7F"
             android:textSize="20sp" />

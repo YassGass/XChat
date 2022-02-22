@@ -55,11 +55,12 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     });
         }
-
-        //connexion
-
     }
 
+    //methodes de gestion des bouton
+    public void btnSignInActivity(View view){
+        startActivity(new Intent(SignInActivity.this, SignupActivity.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
